@@ -7,7 +7,7 @@ $(window).scroll(function () {
     // console.log($("#almost-show").position().top)
     if (window.pageYOffset > $(".bg-yellow").position().top -10 ) {
         $("#almost-show").addClass("fix-scroll");
-        if (window.pageYOffset >( $(".bg-yellow").position().top + h500 - h100) ){
+        if (window.pageYOffset >( $(".bg-yellow").position().top + h500 - h100 - 10) ){
             $("#almost-show").removeClass("fix-scroll");
             $(".h500").addClass("pa");
             $("#almost-show").addClass("fix");
