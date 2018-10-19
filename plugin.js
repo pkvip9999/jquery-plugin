@@ -1,27 +1,34 @@
-
-$(window).scroll(function () {
-    var h500 = $(".h500").height();
-    var h100=$("#almost-show").height();
-    // console.log(window.pageYOffset)
-
-    // console.log($("#almost-show").position().top)
-    if (window.pageYOffset > $(".bg-yellow").position().top -10 ) {
-        $("#almost-show").addClass("fix-scroll");
-        if (window.pageYOffset >( $(".bg-yellow").position().top + h500 - h100 - 10) ){
-            $("#almost-show").removeClass("fix-scroll");
-            $(".h500").addClass("pa");
-            $("#almost-show").addClass("fix");
-        }else {
-            $("#almost-show").addClass("fix-scroll");
-            $(".h500").removeClass("pa");
-            $("#almost-show").removeClass("fix");
+$.fn.inner_float = function(top){
+    var k = $(this);
+    var x = parseInt(top.top);
+    $(window).scroll(function () {
+        var a =k.parent();
+        var p1=a.position();
+        var hparent = $(a).height();
+        var h= k.height();
+        if (window.pageYOffset > p1.top - x ) {
+            k.addClass("fix-scroll");
+            k.css({"top":top.top});
+            if (window.pageYOffset >( p1.top + hparent- h - x) ){
+                k.removeClass("fix-scroll");
+                k.css({"top": ""});
+                a.addClass("pa");
+                k.addClass("fix");
+            }else {
+                k.addClass("fix-scroll");
+                k.css({"top":top.top});
+                a.removeClass("pa");
+                k.removeClass("fix");
+            }
         }
-    }
-    else {
-        $("#almost-show").removeClass("fix-scroll")
-    }
-
+        else {
+            k.removeClass("fix-scroll")
+            k.css({"top": ""});
+        }
+    });
+};
+$('#almost-show').inner_float({
+    top: "10px"
 });
-
 
 
